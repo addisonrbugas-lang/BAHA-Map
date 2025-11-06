@@ -14,6 +14,16 @@ const scale = new mapboxgl.ScaleControl({
 
 map.on('load', function () {
     map.addControl(scale, 'top-right');
+     map.addControl(
+        new mapboxgl.GeolocateControl({
+            positionOptions: {
+                enableHighAccuracy: true
+            },
+            trackUserLocation: true,
+            showUserHeading: true
+        }),
+        'top-right' // Position it next to the scale bar
+    );
     map.addSource('points-data', {
         type: 'geojson',
         data: 'https://raw.githubusercontent.com/addisonrbugas-lang/BAHA-Map/refs/heads/main/data/183data.geojson'
@@ -24,7 +34,7 @@ map.on('load', function () {
         type: 'circle',
         source: 'points-data',
         paint: {
-            'circle-color': '#4264FB',
+            'circle-color': 'black',
             'circle-radius': 6,
             'circle-stroke-width': 2,
             'circle-stroke-color': '#ffffff'
