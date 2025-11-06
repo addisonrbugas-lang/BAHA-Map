@@ -1,36 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mapbox AB</title>
+  <link rel="stylesheet" href="./style.css"><link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/v3.15.0/mapbox-gl.css'>
+</head>
+<body>
+  <h1>Heritage Map of Berkeley</h1>
+  <div class="info-box">
+    <strong>Addison Bugas</strong><br>
+    Created: Nov 5th, 2025<br>
+    Data Source: <a href="https://berkeleyheritage.com/berkeley_landmarks/all_landmarks.html" target="_blank">Berkeley
+      Heritage</a>
+  </div>
+  <div id="map"></div>
+  <script src='https://api.mapbox.com/mapbox-gl-js/v3.15.0/mapbox-gl.js'></script>
+  <script src="./script.js"></script>
+</body>
 
-  <head>
-    <meta charset="UTF-8">
-    <title>Mapbox AB</title>
-    <link rel="stylesheet" href="./style.css">
-    <style>
-      h1 {
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        z-index: 1000;
-        background: rgba(255, 255, 255, 0.9);
-        padding: 15px 20px;
-        margin: 0;
-        border-radius: 8px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
-        font-size: 24px;
-        color: #333;
-      }
-    </style>
-
-  </head>
-    
-  <body>
-    <h1>Heritage Map of Berkeley</h1>
-    <div id="map"></div>
-
-    <script src='https://api.mapbox.com/mapbox-gl-js/v3.15.0/mapbox-gl.js'></script>
-    <script  src="./script.js"></script>
-
-  </body>
-  
 </html>
