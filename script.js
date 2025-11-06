@@ -1,12 +1,19 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiYWRkaWVidWciLCJhIjoiY21oOXI2bjdmMTY3NjJrcHFwc3djem56bCJ9.wddhECgO0WakyNb6jKmc_w';
 const map = new mapboxgl.Map({
-        container: 'map', // container ID
-        style: 'mapbox://styles/addiebug/cmh9rfo8i00qg01r52xmw978p',
-        center: [-122.27, 37.8], // starting position [lng, lat]. Note that lat must be set between -90 and 90
-        zoom: 9 // starting zoom
-    });
+    container: 'map', // container ID
+    style: 'mapbox://styles/addiebug/cmh9rfo8i00qg01r52xmw978p',
+    center: [-122.27, 37.8], // starting position [lng, lat]. Note that lat must be set between -90 and 90
+    zoom: 9 // starting zoom
+});
 
-map.on('load', function() {
+// Create a new ScaleControl instance
+const scale = new mapboxgl.ScaleControl({
+    maxWidth: 80, // Optional: set the maximum width of the scale bar
+    unit: 'metric' // Optional: set the unit ('metric', 'imperial', or 'nautical')
+});
+
+map.on('load', function () {
+    map.addControl(scale, 'top-right');
     map.addSource('points-data', {
         type: 'geojson',
         data: 'https://raw.githubusercontent.com/addisonrbugas-lang/BAHA-Map/refs/heads/main/data/183data.geojson'
@@ -23,13 +30,14 @@ map.on('load', function() {
             'circle-stroke-color': '#ffffff'
         }
     });
+
     // Add click event for popups
     map.on('click', 'points-layer', (e) => {
         const coordinates = e.features[0].geometry.coordinates.slice();
         const properties = e.features[0].properties;
 
-         // Create popup content using the actual data properties
-         const popupContent = `
+        // Create popup content using the actual data properties
+        const popupContent = `
             <div>
                 <h3>${properties.Landmark}</h3>
                 <p><strong>Address:</strong> ${properties.Address}</p>
@@ -40,19 +48,19 @@ map.on('load', function() {
             </div>
         `;
         new mapboxgl.Popup()
-        .setLngLat(coordinates)
-        .setHTML(popupContent)
-        .addTo(map);
-  });
+            .setLngLat(coordinates)
+            .setHTML(popupContent)
+            .addTo(map);
+    });
 
-  // Change cursor to pointer when hovering over points
+    // Change cursor to pointer when hovering over points
     map.on('mouseenter', 'points-layer', () => {
         map.getCanvas().style.cursor = 'pointer';
-});
+    });
 
-// Change cursor back when leaving points
+    // Change cursor back when leaving points
     map.on('mouseleave', 'points-layer', () => {
-        map.getCanvas().style.cursor = '';
-});
+        map.getCanvas().style.cursor = 'grab';
+    });
 
 });
