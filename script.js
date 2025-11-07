@@ -2,8 +2,8 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiYWRkaWVidWciLCJhIjoiY21oOXI2bjdmMTY3NjJrcHFwc
 const map = new mapboxgl.Map({
     container: 'map', // container ID
     style: 'mapbox://styles/addiebug/cmh9rfo8i00qg01r52xmw978p',
-    center: [-122.27, 37.8], // starting position [lng, lat]. Note that lat must be set between -90 and 90
-    zoom: 9 // starting zoom
+    center: [-122.259, 37.8719], // starting position [lng, lat]. Note that lat must be set between -90 and 90
+    zoom: 14 // starting zoom
 });
 
 // Create a new ScaleControl instance
